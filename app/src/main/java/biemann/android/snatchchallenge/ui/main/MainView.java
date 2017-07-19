@@ -2,22 +2,26 @@ package biemann.android.snatchchallenge.ui.main;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.view.View;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import biemann.android.snatchchallenge.BuildConfig;
 import biemann.android.snatchchallenge.MainApplication;
 import biemann.android.snatchchallenge.R;
 import biemann.android.snatchchallenge.data.api.MediawikiGeosearchModel;
 import biemann.android.snatchchallenge.ui.main.di.DaggerMainComponent;
 import biemann.android.snatchchallenge.ui.main.di.MainModule;
+import biemann.android.snatchchallenge.utils.Utilities;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -28,6 +32,9 @@ import butterknife.ButterKnife;
 public class MainView extends AppCompatActivity implements MainContract.View, ListInteractionListener
 {
     private ListRecyclerViewAdapter adapter;
+
+    @BindView(R.id.coordinator)
+    CoordinatorLayout coordinator;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -58,7 +65,7 @@ public class MainView extends AppCompatActivity implements MainContract.View, Li
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        //make API call
+        //make initial API call
         presenter.loadGeosearchData(10000, 51.508164, -0.106511);//TODO make dynamic
     }
 
@@ -84,6 +91,18 @@ public class MainView extends AppCompatActivity implements MainContract.View, Li
 
     }
 
+    @Override
+    public void showGpsError()
+    {
+        Snackbar.make(coordinator, "Location settings requirements not satisfied. Showing last known location if available.", Snackbar.LENGTH_INDEFINITE)
+                .setAction("Retry", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view)
+                    {
+                        presenter.startLocationRefresh();
+                    }})
+                .show();
+    }
 
     //
     // --- ListInteractionListener Implementation ---
@@ -91,7 +110,10 @@ public class MainView extends AppCompatActivity implements MainContract.View, Li
     @Override
     public void onListClick(MediawikiGeosearchModel.QueryListItem data)
     {
-        Log.d("Alex","Click Event on "+data.getTitle()+" ,distance = "+data.getDist());
-        // TODO open the associated Wikipedia article in an external browser
+        // open the associated Wikipedia article in an external browser
+        final String url = BuildConfig.WIKIPEDIAURL+data.getPageid();
+        Utilities.shareUrl(this, url);
     }
+
+
 }

@@ -12,11 +12,12 @@ import java.util.Locale;
 
 import biemann.android.snatchchallenge.R;
 import biemann.android.snatchchallenge.data.api.MediawikiGeosearchModel;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 public class ListRecyclerViewAdapter extends RecyclerView.Adapter<ListRecyclerViewAdapter.ViewHolder>
 {
-
     private List<MediawikiGeosearchModel.QueryListItem> itemList;
     private ListInteractionListener onClickListener;
     private boolean isDataSet;
@@ -81,16 +82,19 @@ public class ListRecyclerViewAdapter extends RecyclerView.Adapter<ListRecyclerVi
     public class ViewHolder extends RecyclerView.ViewHolder
     {
         public final View viewItem;
-        public final TextView itemTitle;
-        public final TextView itemDistance;
+
+        @BindView(R.id.name)
+        TextView itemTitle;
+
+        @BindView(R.id.distance)
+        TextView itemDistance;
 
 
         public ViewHolder(View view)
         {
             super(view);
+            ButterKnife.bind(this, view);
             viewItem = view;
-            itemTitle = (TextView) view.findViewById(R.id.name);
-            itemDistance = (TextView) view.findViewById(R.id.distance);
         }
     }
 }

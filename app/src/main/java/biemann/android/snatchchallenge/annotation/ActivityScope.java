@@ -1,4 +1,4 @@
-package biemann.android.snatchchallenge.di;
+package biemann.android.snatchchallenge.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -13,5 +13,6 @@ import javax.inject.Scope;
 @Documented
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CustomScope {
+public @interface ActivityScope
+{
 }

@@ -1,6 +1,6 @@
 package biemann.android.snatchchallenge.ui.main.di;
 
-import biemann.android.snatchchallenge.di.CustomScope;
+import biemann.android.snatchchallenge.annotation.ActivityScope;
 import biemann.android.snatchchallenge.ui.main.MainContract;
 import dagger.Module;
 import dagger.Provides;
@@ -20,7 +20,7 @@ public class MainModule
     }
 
     @Provides
-    @CustomScope
+    @ActivityScope
     MainContract.View providesMainContractView()
     {
         return view;

@@ -17,6 +17,8 @@ android {
 
         // depending on flavour, alter the baseURL
         buildConfigField "String", "BASEURL", "\"https://en.wikipedia.org\""
+
+        buildConfigField "String", "WIKIPEDIAURL", "\"https://en.wikipedia.org/?curid=\""
     }
     buildTypes {
         release {
@@ -41,7 +43,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:recyclerview-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:multidex:1.0.1'
 
     //Retrofit
@@ -68,4 +69,7 @@ dependencies {
     // Butterknife
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+
+    // GPS
+    //compile 'com.patloew.rxlocation:rxlocation:1.0.3'
 }
