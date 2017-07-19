@@ -47,7 +47,9 @@ public class MediawikiGeosearchModel
         return query;
     }
 
-    class Query
+
+
+    public class Query
     {
         List<QueryListItem> geosearch;
 
@@ -57,7 +59,9 @@ public class MediawikiGeosearchModel
         }
     }
 
-    class QueryListItem
+
+
+    public class QueryListItem
     {
         Long pageid;
         Integer ns;

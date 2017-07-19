@@ -1,0 +1,20 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">8dp</dimen>
+    <dimen name="activity_vertical_margin">8dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+    <!-- recycler view -->
+    <dimen name="listview_margin_top">12dp</dimen><!-- should be just a touch bigger than activity_vertical_margin -->
+    <dimen name="listview_corner_rounding">4dp</dimen>
+
+    <!-- material design see 'Single-line item with avatar and icon specs' https://material.io/guidelines/components/lists.html#lists-specs -->
+    <dimen name="listitem_height">56dp</dimen>
+    <dimen name="listitem_padding_top">8dp</dimen>
+    <dimen name="listitem_padding_right_text">16dp</dimen>
+    <dimen name="listitem_padding_left_text">16dp</dimen>
+    <dimen name="listitem_font_size">16sp</dimen>
+
+</resources>

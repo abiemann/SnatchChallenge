@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/listitem_height"
+    android:paddingTop="@dimen/listitem_padding_top">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:layout_marginLeft="@dimen/listitem_padding_left_text"
+        android:textSize="@dimen/listitem_font_size"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="@dimen/listitem_padding_right_text"
+        android:textSize="@dimen/listitem_font_size"
+        android:layout_centerVertical="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorDivider"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
