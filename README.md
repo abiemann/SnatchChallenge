@@ -37,4 +37,6 @@
    UI design - it would be more realistic if there were a separate sheet for a UI specification
    
    
-   
+## Screenshot ##
+
+![](https://github.com/abiemann/SnatchChallenge/blob/master/device-screenshot.png)
