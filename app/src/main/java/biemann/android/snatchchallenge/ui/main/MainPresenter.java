@@ -18,16 +18,17 @@ import rx.schedulers.Schedulers;
 
 public class MainPresenter implements MainContract.Presenter
 {
-    private Retrofit retrofit;
+   // private Retrofit retrofit;
+    private MediawikiGeosearchApi mediawikiGeosearchApi;
     private MainContract.View view;
     private boolean apiRequestInProgress;
     private long lastKnownApiRequestTime;
 
 
     @Inject
-    public MainPresenter(Retrofit retrofit, MainContract.View view)
+    public MainPresenter(MediawikiGeosearchApi mediawikiGeosearchApi, MainContract.View view)
     {
-        this.retrofit = retrofit;
+        this.mediawikiGeosearchApi = mediawikiGeosearchApi;
         this.view = view;
     }
 
@@ -53,7 +54,8 @@ public class MainPresenter implements MainContract.Presenter
                 lastKnownApiRequestTime = System.currentTimeMillis();
                 final String coordinates = loc.getLatitude() + "|" + loc.getLongitude();
 
-                retrofit.create(MediawikiGeosearchApi.class)
+                //retrofit.create(MediawikiGeosearchApi.class)
+                mediawikiGeosearchApi
                         .getGeosearchFromApi("query", "geosearch", range, coordinates, "json")
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())

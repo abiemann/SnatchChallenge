@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import biemann.android.snatchchallenge.data.api.MediawikiGeosearchApi;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -72,7 +73,8 @@ public class MainPresenterTest
 //            }
 //        });
 
-        presenter = new MainPresenter(retrofit, view);
+        MediawikiGeosearchApi mediawikiGeosearchApi = retrofit.create(MediawikiGeosearchApi.class);
+        presenter = new MainPresenter(mediawikiGeosearchApi, view);
     }
 
 
